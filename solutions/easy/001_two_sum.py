@@ -79,3 +79,45 @@ def test():
 
 if __name__ == "__main__":
     test()
+
+"""
+问题: Merge Sorted Array (LeetCode 88)
+难度: Easy
+链接: https://leetcode.com/problems/merge-sorted-array/
+
+描述:
+    给你两个有序整数数组 nums1 和 nums2，
+    请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+
+时间复杂度: O(m + n)
+空间复杂度: O(1)
+"""
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """原地合并两个有序数组"""
+        p = m - 1
+        q = n - 1
+        j = m + n - 1
+
+        while j >= 0:
+            if p == -1:
+                nums1[j] = nums2[q]
+                q -= 1
+            elif q == -1:
+                nums1[j] = nums1[p]
+                p -= 1
+            elif nums2[q] >= nums1[p]:
+                nums1[j] = nums2[q]
+                q -= 1
+            else:
+                nums1[j] = nums1[p]
+                p -= 1
+            j -= 1
+
+
+if __name__ == "__main__":
+    sol = Solution()
+    nums1 = [1, 2, 3, 0, 0, 0]
+    sol.merge(nums1, 3, [2, 5, 6], 3)
+    print(nums1)  # [1, 2, 2, 3, 5, 6]

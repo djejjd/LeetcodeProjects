@@ -5,7 +5,7 @@ class Solution:
         """
         p = m - 1
         q = n - 1
-        j = m + n - 1P
+        j = m + n - 1
 
 
         while j >= 0 :
